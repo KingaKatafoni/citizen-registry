@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: citizen-registry-db
+    environment:
+      POSTGRES_DB: citizen_registry
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
