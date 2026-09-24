@@ -2,11 +2,11 @@ spring:
   application:
     name: citizen-registry
 
-datasource:
-  url: jdbc:postgresql://localhost:5432/citizen_registry
-  username: app_user
-  password: app_password
-  driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/citizen_registry
+    username: app_user
+    password: app_password
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
