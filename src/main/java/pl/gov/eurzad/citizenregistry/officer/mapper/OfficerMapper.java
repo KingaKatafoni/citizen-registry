@@ -12,6 +12,6 @@ public interface OfficerMapper {
 
     @Mapping(source = "role", target = "role")
     OfficerResponse toResponse(Officer officer);
-    
+
 
 }
