@@ -2,6 +2,7 @@ package pl.gov.eurzad.citizenregistry.application.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class ApplicationController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ApplicationResponse>> findAll(@RequestParam(required = false)ApplicationStatus status, Pageable pageable){
+    public ResponseEntity<Page<ApplicationResponse>> findAll(@RequestParam(required = false)ApplicationStatus status, @ParameterObject Pageable pageable){
         Page<Application> page = (status != null)
                 ? applicationService.findByStatus(status, pageable)
                 : applicationService.findAll(pageable);

@@ -1,6 +1,7 @@
 package pl.gov.eurzad.citizenregistry.officer.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class OfficerController {
     private final OfficerMapper mapper;
 
     @GetMapping
-    public ResponseEntity<Page<OfficerResponse>> findAllOfficers(Pageable pageable){
+    public ResponseEntity<Page<OfficerResponse>> findAllOfficers(@ParameterObject Pageable pageable){
         Page<OfficerResponse> page = officerService.findAll(pageable)
                 .map(mapper::toResponse);
         return ResponseEntity.ok(page);

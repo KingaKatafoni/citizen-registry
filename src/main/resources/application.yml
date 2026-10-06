@@ -27,3 +27,7 @@ server:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+jwt:
+  secret: moj-super-tajny-klucz-ktory-musi-miec-co-najmniej-256-bitow-zeby-HMAC-SHA256-dzialal
+  expiration: 86400000

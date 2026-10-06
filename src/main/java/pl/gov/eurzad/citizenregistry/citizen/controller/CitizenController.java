@@ -2,6 +2,7 @@ package pl.gov.eurzad.citizenregistry.citizen.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class CitizenController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<CitizenResponse>> findAll(Pageable pageable){
+    public ResponseEntity<Page<CitizenResponse>> findAll(@ParameterObject Pageable pageable){
         Page<CitizenResponse> page = citizenService.findAll(pageable)
                 .map(citizenMapper::toResponse);
         return ResponseEntity.ok(page);
@@ -48,7 +49,7 @@ public class CitizenController {
         return ResponseEntity.ok(citizenMapper.toResponse(citizen));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<CitizenResponse> update(
             @PathVariable Long id,
             @Valid @RequestBody UpdateCitizenRequest request){
